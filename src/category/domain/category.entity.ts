@@ -64,6 +64,12 @@ export default class Category extends Entity {
         Category.validate(this);
     }
 
+    update(name: string, description: string): void {
+        name && this.changeName(name);
+        description && this.changeDescription(description);
+        Category.validate(this);
+    }
+
     activate(): void {
         this.is_active = true;
     }

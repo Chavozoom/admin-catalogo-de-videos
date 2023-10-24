@@ -70,6 +70,59 @@ describe('Category entity test', () => {
         });
     });
 
+    describe('update', () => {
+        it("should update both name and category", () => {
+            const categoryProps: CategoryCreateCommand = {
+                name: "Category",
+                description: "Category description",
+                created_at: new Date(),
+                is_active: false
+            };
+            const category = Category.create(categoryProps);
+
+            const newName = "new category name";
+            const newCategoryDesc = "new category description";
+            category.update(newName, newCategoryDesc);
+            expect(category.name).toBe(newName);
+            expect(category.description).toBe(newCategoryDesc);
+        });
+
+        it("should update only name", () => {
+            const categoryDesc = "category description";
+
+            const categoryProps: CategoryCreateCommand = {
+                name: "Category",
+                description: categoryDesc,
+                created_at: new Date(),
+                is_active: false
+            };
+            const category = Category.create(categoryProps);
+
+            const newName = "new category name";
+            category.update(newName, null);
+            expect(category.name).toBe(newName);
+            expect(category.description).toBe(categoryDesc);
+        });
+
+        it("should update only description", () => {
+            const name = "category name";
+
+            const categoryProps: CategoryCreateCommand = {
+                name,
+                description: "category description",
+                created_at: new Date(),
+                is_active: false
+            };
+
+            const category = Category.create(categoryProps);
+
+            const newDescription = "new category description";
+            category.update(null, newDescription);
+            expect(category.description).toBe(newDescription);
+            expect(category.name).toBe(name);
+        });
+    });
+
     describe('changes', () => {
         const categoryProps: CategoryCreateCommand = {
             name: "Category",
