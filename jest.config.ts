@@ -137,7 +137,7 @@ const config: Config = {
     // setupFiles: [],
 
     // A list of paths to modules that run some code to configure or set up the testing framework before each test
-    setupFilesAfterEnv: ["./@shared/infra/testing/expect-helpers.ts"],
+    // setupFilesAfterEnv: ["./@shared/infra/testing/expect-helpers.ts"],
 
     // The number of seconds after which a test is considered as slow and reported as such in the results.
     // slowTestThreshold: 5,
@@ -215,6 +215,8 @@ const config: Config = {
         '-fixture.ts',
         '.input.ts',
         '.d.ts',
+        "global-config.ts",
+        "dto.ts",
     ],
     coverageThreshold: {
         global: {
@@ -225,7 +227,7 @@ const config: Config = {
         },
     },
     testEnvironment: 'node',
-    //setupFilesAfterEnv: ['./core/shared/infra/testing/expect-helpers.ts'],
+    setupFilesAfterEnv: ['./core/@shared/infra/testing/expect-helpers.ts'],
     coverageProvider: 'v8',
     clearMocks: true,
     moduleNameMapper: {
